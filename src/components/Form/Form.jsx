@@ -42,7 +42,7 @@ export class Form extends Component {
         required
         />
       </label>
-        <label htmlFor={inputTelId}>
+        <label htmlFor={inputTelId}>Number
           <input
             id={inputTelId}
             onChange={this.handelChange}
