@@ -3,39 +3,41 @@ import { Form } from "./Form/Form";
 import { nanoid } from 'nanoid'
 export class App extends Component {
   state = {
-  contacts: [1,2,3],
-  name: ''
+   contacts: [],
+  name: '',
   }
   
-  onSubmiHandler = name => {
-    
+  onSubmiHandler = (name, number) => {
     const contact = {
       id: nanoid(),
       name,
+      number,
     };
+
     console.log(contact);
-    
-    this.setState(prevState => ({
-      contacts: [contact, ...prevState.contacts],
-    }))
-    
+    this.setState(prevState => ({contacts: [contact, ...prevState.contacts],}))
   };
 
 
 
   render() {
    
-    const { name,contacts } = this.state;
+    const { contacts } = this.state;
 
     return (<>
       <h1>Phonebook</h1>
-      {name}
-      {contacts}
+    
+    
       <Form onSubmit={this.onSubmiHandler} />
       
       
       <div>
         <h2>Contacts</h2>
+        <ul>
+           {contacts.map(({ name, id, number }) => {
+             return <li key={id}>{name}: { number}</li>
+        })}
+        </ul>
       </div>
     </>
     
