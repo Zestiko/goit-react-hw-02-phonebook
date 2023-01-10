@@ -30,6 +30,10 @@ input{
   border-width: 1px;
   border-color:darkseagreen;
 }
+input:focus,
+input:hover {
+  outline: none;
+}
 
 label {
   display: inline-flex;
