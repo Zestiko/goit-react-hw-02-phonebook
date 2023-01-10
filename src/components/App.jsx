@@ -40,7 +40,7 @@ export class App extends Component {
 
   handleDelete = id => {
     this.setState(prevState => {
-      const newContactList = prevState.contacs.filter(contact => contact.id !== id);
+      const newContactList = prevState.contacts.filter(contact => contact.id !== id);
       console.log(newContactList)
 
       return { contacts: newContactList };
@@ -50,10 +50,10 @@ export class App extends Component {
 
 
   render() {  
-    const { contacts, filter, id } = this.state;
+    const { contacts, filter } = this.state;
     const filterContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
 
-  return (<div>
+  return (<>
     <h1>Phonebook</h1>
     <Form onSubmit={this.onSubmiHandler} />
     
@@ -61,7 +61,7 @@ export class App extends Component {
     <Filter value={filter} onChange={this.handelChange }/>
     <Contacts contacts={ filterContacts} onDelete={this.handleDelete} />
  
-  </div>
+  </>
   );
  }
 };
